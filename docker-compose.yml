@@ -1,0 +1,16 @@
+version: '3'
+services:
+  java-srv:
+    build:
+      context: java-srv
+    depends_on:
+      - db
+    links:
+      - "db:db"
+
+  db:
+    image: mariadb:latest
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_USER=maria
+      - MYSQL_PASSWORD=pass
